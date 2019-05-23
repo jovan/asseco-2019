@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html   xmlns="http://www.w3c.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>Trening</title>
+    </h:head>
+            <h:form>
+                <p:growl autoUpdate="true" showDetail="true" />
+    <h:body>
+
+        <div>
+            <p:panel>Welcome in the Trening application!</p:panel>
+            <p style="height:50px">
+         Welcome in the Trening application!
+            </p>
+            <p:panelGrid columns="2"  id="panelKorisnik">
+                <p:outputLabel> ime</p:outputLabel>
+                <p:inputText value="#{testKorisniciController.nov.ime}" 
+                             required="true" requiredMessage="vnesi ime"></p:inputText>
+                
+                <p:outputLabel> prezime</p:outputLabel>
+                <p:inputText value="#{testKorisniciController.nov.prezime}"></p:inputText>
+                
+                <p:outputLabel> pol</p:outputLabel> 
+                <p:selectOneRadio value="#{testKorisniciController.nov.pol}" >
+                    <f:selectItem itemLabel="Masko" itemValue="false" />
+                    <f:selectItem itemLabel="Zensko" itemValue="true" />
+                </p:selectOneRadio>
+                
+                 <p:outputLabel> vozrast</p:outputLabel>
+                <p:inputText value="#{testKorisniciController.nov.vozrast}"></p:inputText>
+                
+                 <p:outputLabel> maticen</p:outputLabel>
+                <p:inputText value="#{testKorisniciController.nov.maticen}"></p:inputText>
+                
+                 <p:outputLabel> adresa</p:outputLabel>
+                <p:inputText value="#{testKorisniciController.nov.address}"></p:inputText>
+                
+                <p:outputLabel for="profession" value="Profession" />
+                <p:selectOneMenu id="profession" value="#{testKorisniciController.nov.profession}">
+                    <f:selectItem itemLabel="Select Profession"> </f:selectItem>
+                    <f:selectItems value="#{testKorisniciController.profession}"></f:selectItems>
+                </p:selectOneMenu>
+                
+                <p:commandButton   type="button" value="Dodadi Korisnik" >  
+                <p:ajax event="click" process="@form" listener="#{testKorisniciController.kreirajNovKorisnik()}"
+                        update="@form"/>
+                </p:commandButton>
+            </p:panelGrid>
+            
+        </div>
+        
+        <div style="margin-top:100px;">
+            <p:dataTable var="korisnik" value="#{testKorisniciController.korisnici}"
+                         rows="10"
+                 paginator="true"
+                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 rowsPerPageTemplate="10,50,100">
+                
+                <p:column headerText="Id">
+                    <h:outputText value="#{korisnik.entityId}" />
+                </p:column>
+
+                <p:column headerText="Address">
+                    <h:outputText value="#{korisnik.address}" />
+                </p:column>
+                
+                <p:column headerText="Ime">
+                    <h:outputText value="#{korisnik.ime}" />
+                </p:column>
+
+                <p:column headerText="Maticen">
+                    <h:outputText value="#{korisnik.maticen}" />
+                </p:column>
+                
+                <p:column headerText="Pol">             
+                    <h:outputText value="#{korisnik.pol ? 'zensko' : 'masko' }" />
+                </p:column>
+
+                <p:column headerText="Prezime">
+                    <h:outputText value="#{korisnik.prezime}" />
+                </p:column>
+                
+                <p:column headerText="Vozrast">
+                    <h:outputText value="#{korisnik.vozrast}" />
+                </p:column>
+
+                <p:column headerText="Profesija">
+                    <h:outputText value="#{korisnik.profession}" />
+                </p:column>
+            </p:dataTable>
+        </div>
+        
+    </h:body>
+    </h:form>
+</html>
