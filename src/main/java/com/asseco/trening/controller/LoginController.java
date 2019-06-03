@@ -27,7 +27,6 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import lombok.Getter;
 import lombok.Setter;
-import org.primefaces.context.RequestContext;
 
 
 /**

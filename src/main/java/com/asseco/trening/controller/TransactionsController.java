@@ -5,7 +5,9 @@
  */
 package com.asseco.trening.controller;
 
+import com.asseco.trening.model.Transactions;
 import com.asseco.trening.service.TransactionsService;
+import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -19,4 +21,7 @@ public class TransactionsController {
     @Inject
     private TransactionsService transactionsService;
     
+    public List<Transactions> findAll(){
+        return transactionsService.findAll();
+    }
 }

@@ -262,7 +262,21 @@ public class Accounts implements Serializable {
 
     @Override
     public String toString() {
-        return "com.asseco.trening.model.Accounts[ id=" + id + " ]";
+        StringBuilder s = new StringBuilder();
+        s.append("AccountNumber: "+this.accountNumber+"\n");
+        s.append("Currency: "+this.currency.getCurrency()+"\n");
+        s.append("Status: "+this.status+"\n");
+        s.append("Blocked: "+this.blocked+"\n");
+        s.append("Balance: "+this.balance+"\n");
+        s.append("OverdraftLimit: "+this.overdraftLimit+"\n");
+        s.append("AmountOnHold: "+this.amountOnHold+"\n");
+        s.append("AvailableBalance: "+this.availableBalance+"\n");
+        return s.toString();
     }
+    
+//    @Override
+//    public String toString() {
+//        return "com.asseco.trening.model.Accounts[ id=" + id + " ]";
+//    }
     
 }

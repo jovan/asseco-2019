@@ -14,46 +14,72 @@
         
         <ui:composition template="/templates/main.xhtml">
             <ui:define name="content">
-                <h:form>
-                <p:growl autoUpdate="true" showDetail="true" />
+                <div class="row">
+                    <div class="col-sm">
+                        <p:panel header="Add User" style="margin-bottom:10px; text-align: center">
+<!--                            <h:panelGrid columns="5" cellpadding="5" border="1">
+                                
+                                
 
-                <div class="text-center d-flex justify-content-center">
-                    <p:panel>Welcome in the Trening application!</p:panel><br/>
-                    <p:panelGrid columns="2"  id="panelKorisnik">
-                        <p:outputLabel>Name</p:outputLabel>
-                        <p:inputText value="#{usersController.newUser.name}" 
-                                     required="true" requiredMessage="vnesi ime"></p:inputText>
+                            </h:panelGrid>-->
 
-                        <p:outputLabel>UserName</p:outputLabel>
-                        <p:inputText value="#{usersController.newUser.username}"></p:inputText>
-                        
-                        <p:outputLabel>Password</p:outputLabel>
-                        <p:inputText value="#{usersController.newUser.password}"></p:inputText>
+<!--                            <h:panelGrid columns="5" cellpadding="5" border="1" cellspacing="1">
+                                adfadf
+                            </h:panelGrid>-->
+                            
+                            <!-- Table1 -->
+ 
+                            <h:panelGrid columns="4"  styleClass="table" headerClass="header" footerClass="footer">
 
-<!--                        https://www.primefaces.org/showcase/ui/data/pickList.xhtml-->
-<!--https://www.primefaces.org/showcase/ui/panel/grid.xhtml-->
-<!--https://getbootstrap.com/docs/4.0/layout/grid/-->
-                        
-                        <p:outputLabel>Password</p:outputLabel> 
-                        <p:selectOneRadio value="#{usersController.newUser.password}" >
-                            <f:selectItem itemLabel="Masko" itemValue="false" />
-                            <f:selectItem itemLabel="Zensko" itemValue="true" />
-                        </p:selectOneRadio>
+                                <f:facet name="header">
+                                <h:outputText value="User Information" />
+                                </f:facet>
+                                <h:outputText value="Name " /><h:inputText  />
+                                <h:outputText value="Username" /><h:inputText  />
+                                <h:outputText value="Password " /><h:inputText  />
+                                
+                                <h:outputText value="AccountCredit " />
+                                <p:selectOneMenu id="cashAcc" value="#{usersController.newUser.cashAccountId}" dynamic="true"
+                                                 style="width: 197px;">
+                                    <f:selectItem itemLabel="Select Cash Account"> </f:selectItem>
+                                    <f:selectItems value="#{accountsController.findAll()}" 
+                                                   var ="accCash" itemLabel="#{accCash}" itemValue="#{accCash}"/>
+                                </p:selectOneMenu>
+                                
+                                <h:outputText value="Client " />
+                                <p:selectOneMenu id="client" value="#{usersController.newUser.cashAccountId}" dynamic="true"
+                                                 style="width: 197px;">
+                                    <f:selectItem itemLabel="Select Client"> </f:selectItem>
+                                    <f:selectItems value="#{accountsController.findAll()}" 
+                                                   var ="client" itemLabel="#{client}" itemValue="#{client}"/>
+                                </p:selectOneMenu>
+                                
+                                <h:outputText value="Admin rights " />
+                                <p:selectOneMenu id="admin" value="#{usersController.newUser.admin}" dynamic="true"
+                                                  style="width: 197px;">
+                                    <f:selectItem itemLabel="False" itemValue="false"/>
+                                    <f:selectItem itemLabel="True" itemValue="true"/>
+                                </p:selectOneMenu>
+                                
 
-                        <p:outputLabel>CashAccountId</p:outputLabel>
-                        <p:inputText value="#{testKorisniciController.nov.vozrast}"></p:inputText>
+                                <f:facet name="footer">
+<!--                                    update="growl" -->
+                                    <p:commandButton value="Add User" id="ajax" 
+                                                     action="#{usersController.create()}" 
+                                                     styleClass="ui-priority-primary" />
+<!--                                <h:commandButton value="submit" type="submit" styleClass="footer" />-->
+                                </f:facet>
+                            </h:panelGrid>
 
-                        <p:outputLabel>ClientId</p:outputLabel>
-                        <p:inputText value="#{testKorisniciController.nov.maticen}"></p:inputText>
+                            <br/><br/><br/>
+<!--                            <p:separator />-->
 
-                        <p:commandButton   type="button" value="Dodadi Korisnik" >  
-                        <p:ajax event="click" process="@form" listener="#{testKorisniciController.kreirajNovKorisnik()}"
-                                update="@form"/>
-                        </p:commandButton>
-                    </p:panelGrid>
-
-                </div>     
-                </h:form>
+<!--                            <p:commandButton value="Submit" update="msgs" action="#{dropdownView.displayLocation}" icon="pi pi-check" />-->
+                        </p:panel>
+                    </div>
+           
+                </div>
+                
             </ui:define>
         </ui:composition>
         

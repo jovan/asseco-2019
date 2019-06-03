@@ -9,9 +9,11 @@ import com.asseco.trening.model.Accounts;
 import com.asseco.trening.model.Clients;
 import com.asseco.trening.model.Transactions;
 import com.asseco.trening.model.Users;
+import com.asseco.trening.service.UsersService;
 import java.util.Collection;
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.inject.Named;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,6 +28,9 @@ import lombok.Setter;
 @Stateless
 public class UsersController {
     
+    @Inject
+    private UsersService usersService;
+    
     private Users newUser;
     
     @PostConstruct
@@ -33,9 +38,10 @@ public class UsersController {
         newUser = new Users();
     }
     
-    public void addUser(){
+    public void create(){
         //TODO: check for properties null and display appropriate message
-        
+        usersService.create(newUser);
+        newUser = new Users();
     }
     public void addUserTransaction(){
         
