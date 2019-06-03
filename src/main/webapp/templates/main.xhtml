@@ -7,7 +7,8 @@
 <html xmlns="http://www.w3c.org/1999/xhtml"
         xmlns:f="http://java.sun.com/jsf/core"
         xmlns:h="http://java.sun.com/jsf/html"
-        xmlns:p="http://primefaces.org/ui">
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     
   <h:head>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"></link>
@@ -19,71 +20,46 @@
   <h:body>
     <nav class="navbar navbar-default">
       <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
+        
+          <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#jovanmeni" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Jovan's Bank</a>
+          <a class="navbar-brand" href="#">God's Bank</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="/trening-master/main.xhtml">Home <span class="sr-only">(current)</span></a></li>
-            
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrator menu<span class="caret"></span></a>
-              
-              <ul class="dropdown-menu">
+        <div class="collapse navbar-collapse" id="jovanmeni">
+          
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                
+                <ui:fragment rendered="#{loginController.checkAdmin()}">
                   
-                  <li> <!--update="growl"--> 
-                      <p:commandButton class="btn" value="Ajax Submit" id="ajax" 
-                                       action="#{buttonView.buttonAction}" style="margin-right:20px;" 
-                                       styleClass="ui-priority-primary btn btn-default" />
-                      
-                      
-                  </li>
-                  
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrator menu<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><p:link outcome="/adminMenu/addUsers.xhtml" value="Add User"></p:link></li>
+                            <li role="separator" class="divider"></li>
+                            <li><p:link outcome="#{testKorisniciController.test()}" value="Add AccountClasses"></p:link></li>
+                            <li role="separator" class="divider"></li>
+                            <li><p:link outcome="#{testKorisniciController.test()}" value="Add AccountTypes"></p:link></li>
+                            <li role="separator" class="divider"></li>
+                            <li><p:link outcome="#{testKorisniciController.test()}" value="Add TransactionTypes"></p:link></li>
+                        </ul>
+                    </li>
+                </ui:fragment>
+                
             
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Insert Transactions<span class="caret"></span></a>
-              
-              <ul class="dropdown-menu">
-                  
-                  <li> <!--update="growl"--> 
-                      <p:commandButton class="btn" value="Insert" id="ajax" 
-                                       action="#" style="margin-right:20px;" 
-                                       styleClass="ui-priority-primary btn btn-default" />
-                      
-                      
-                  </li>
-                  
-<!--                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">One more separated link</a></li>-->
-              </ul>
-            </li>
-            
-            <li><a href="#">Verification Page</a></li>
-            
+                <li><a href="#">Clients &hArr; Accounts</a></li>
           </ul>
+            
           <form class="navbar-form navbar-left">
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Search"></input>
@@ -102,5 +78,13 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
+      
+    <div class="container">
+      <ui:insert name="content"> <!-- ui:define obratno -->
+
+      </ui:insert>
+    </div>
+
+      
   </h:body>
 </html>

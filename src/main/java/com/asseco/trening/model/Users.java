@@ -71,16 +71,15 @@ public class Users implements Serializable {
     @ManyToOne
     private Clients clientId;
     
-    private String role; //za pristap do menito
-    
-    
+    private Boolean admin; //za pristap do menito
 
-    public String getRole() {
-        return role;
+   
+    public Boolean getAdmin() {
+        return admin;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setAdmin(Boolean admin) {
+        this.admin = admin;
     }
     
     public Users() {

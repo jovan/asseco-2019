@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html   xmlns="http://www.w3c.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    <h:head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>Trening</title>
+    </h:head>
+    <h:body>
+        
+        <ui:composition template="/templates/main.xhtml">
+            <ui:define name="content">
+                <h:form>
+                <p:growl autoUpdate="true" showDetail="true" />
+
+                <div class="text-center d-flex justify-content-center">
+                    <p:panel>Welcome in the Trening application!</p:panel><br/>
+                    <p:panelGrid columns="2"  id="panelKorisnik">
+                        <p:outputLabel>Name</p:outputLabel>
+                        <p:inputText value="#{usersController.newUser.name}" 
+                                     required="true" requiredMessage="vnesi ime"></p:inputText>
+
+                        <p:outputLabel>UserName</p:outputLabel>
+                        <p:inputText value="#{usersController.newUser.username}"></p:inputText>
+                        
+                        <p:outputLabel>Password</p:outputLabel>
+                        <p:inputText value="#{usersController.newUser.password}"></p:inputText>
+
+                        <p:outputLabel>Password</p:outputLabel> 
+                        <p:selectOneRadio value="#{usersController.newUser.password}" >
+                            <f:selectItem itemLabel="Masko" itemValue="false" />
+                            <f:selectItem itemLabel="Zensko" itemValue="true" />
+                        </p:selectOneRadio>
+
+                        <p:outputLabel>CashAccountId</p:outputLabel>
+                        <p:inputText value="#{testKorisniciController.nov.vozrast}"></p:inputText>
+
+                        <p:outputLabel>ClientId</p:outputLabel>
+                        <p:inputText value="#{testKorisniciController.nov.maticen}"></p:inputText>
+
+                        <p:commandButton   type="button" value="Dodadi Korisnik" >  
+                        <p:ajax event="click" process="@form" listener="#{testKorisniciController.kreirajNovKorisnik()}"
+                                update="@form"/>
+                        </p:commandButton>
+                    </p:panelGrid>
+
+                </div>     
+                </h:form>
+            </ui:define>
+        </ui:composition>
+        
+    </h:body>
+</html>

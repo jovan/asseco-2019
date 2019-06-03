@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.asseco.trening.controller;
 
 import com.asseco.trening.model.Users;
@@ -22,6 +17,7 @@ import java.security.spec.KeySpec;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.Optional;
+import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
@@ -42,8 +38,9 @@ import org.primefaces.context.RequestContext;
 @Getter
 @Setter
 @SessionScoped
-@Named("userController")
-public class UserController implements Serializable{
+@Named("loginController")
+public class LoginController implements Serializable{
+    //TODO: Rename ?
     
     @Inject
     private UsersService usersService;
@@ -77,8 +74,7 @@ public class UserController implements Serializable{
     //throws NoSuchAlgorithmException
     public String login() {
         //read password from database
-        user = usersService.findByUsername(username);
-        externalContext.getSessionMap().put("user", user); //undo on logout
+        user = usersService.findByUsername(username); 
         
         //String dataBasePass = usersService.findByUsername(username).getPassword();
         //check if the user does not exists show message
@@ -105,11 +101,12 @@ public class UserController implements Serializable{
         //todo: read from database and check for match
         //if a match create new user
         if(user != null){ //redirect
-            if(user.getPassword().equals(password)) 
-                return "/main.xhtml?faces-redirect=true";
+            if(user.getPassword().equals(password))
+               // externalContext.getSessionMap().put("user", user); //undo on logout
+                return "templates/main.xhtml?faces-redirect=true";
         }
         
-        resetUser();
+        resetText();
         showMessages("");
         return null;
     }
@@ -133,7 +130,22 @@ public class UserController implements Serializable{
     }
     private void resetUser(){
         user = null;
-        username=password=null;
+        resetText();
+    }
+    private void resetText(){
+        username=null;
+        password=null;
+        //clearMessages();
+    }
+    private void clearMessages(){
+        while(FacesContext.getCurrentInstance().getMessages().hasNext()){
+            FacesContext.getCurrentInstance().getMessages().remove();
+        }
+    }
+    
+    public boolean checkAdmin(){
+        return user.getAdmin();
+        //TODO: filter and not return null
     }
     
     

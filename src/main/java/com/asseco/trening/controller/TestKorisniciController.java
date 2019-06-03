@@ -49,6 +49,10 @@ public class TestKorisniciController {
 //        cars = service.createCars(10);
 //    }
     
+    public String test(){
+         return "/login.xhtml?faces-redirect=true";
+    }
+
     public void kreirajNovKorisnik(){
     
         try {
