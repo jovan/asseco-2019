@@ -47,34 +47,44 @@ public class Accountclasses implements Serializable {
     @NotNull
     @Column(name = "Id")
     private Long id;
+    
     @Size(max = 30)
     @Column(name = "Name")
     private String name;
+    
     @Size(max = 100)
     @Column(name = "Description")
     private String description;
+    
     @Column(name = "Type")
     private Integer type;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "IsCashAccount")
     private int isCashAccount;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "IsCurrentAccount")
     private int isCurrentAccount;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "IsDepositAccount")
     private int isDepositAccount;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "IsCreditAccount")
     private int isCreditAccount;
+    
     @OneToMany(mappedBy = "classId")
     private Collection<Accounttypes> accounttypesCollection;
+    
     @OneToMany(mappedBy = "accountClassDebit")
     private Collection<Transactiontypes> transactiontypesCollection;
+    
     @OneToMany(mappedBy = "accountClaassCredit")
     private Collection<Transactiontypes> transactiontypesCollection1;
 

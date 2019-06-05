@@ -29,7 +29,6 @@ public class UsersService {
          return usersDAO.findByUsername(username);
      }
    
-     //proverki return Message
     public void create(Users user){
         usersDAO.create(user);
     }

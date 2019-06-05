@@ -46,32 +46,42 @@ public class Clients implements Serializable {
     @NotNull
     @Column(name = "Id")
     private Long id;
+    
     @Size(max = 200)
     @Column(name = "Name")
     private String name;
+    
     @Column(name = "Type")
     private Integer type;
+    
     @Size(max = 36)
     @Column(name = "IdentificationNumber")
     private String identificationNumber;
+    
     @Size(max = 100)
     @Column(name = "Address")
     private String address;
+    
     @Size(max = 30)
     @Column(name = "Tel")
     private String tel;
+    
     @Size(max = 30)
     @Column(name = "Mob")
     private String mob;
+    
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Size(max = 30)
     @Column(name = "Email")
     private String email;
+    
     @Size(max = 100)
     @Column(name = "Web")
     private String web;
+    
     @OneToMany(mappedBy = "clientId")
     private Collection<Accounts> accountsCollection;
+    
     @OneToMany(mappedBy = "clientId")
     private Collection<Users> usersCollection;
 

@@ -45,42 +45,55 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Transactions implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "Id")
     private Long id;
+    
     @Column(name = "EntyDate")
     @Temporal(TemporalType.DATE)
     private Date entyDate;
+    
     @Column(name = "Date")
     @Temporal(TemporalType.DATE)
     private Date date;
+    
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "Fee")
     private BigDecimal fee;
+    
     @Column(name = "Amount")
     private BigDecimal amount;
+    
     @Size(max = 100)
     @Column(name = "Description")
     private String description;
+    
     @Size(max = 50)
     @Column(name = "Status")
     private String status;
+    
     @OneToMany(mappedBy = "transactionId")
     private Collection<Postingentries> postingentriesCollection;
+    
     @JoinColumn(name = "AccountIdDebit", referencedColumnName = "Id")
     @ManyToOne
     private Accounts accountIdDebit;
+    
     @JoinColumn(name = "AccountIdCredit", referencedColumnName = "Id")
     @ManyToOne
     private Accounts accountIdCredit;
+    
     @JoinColumn(name = "Currency", referencedColumnName = "Currency")
     @ManyToOne
     private Currencies currency;
+    
     @JoinColumn(name = "TransactionTypeId", referencedColumnName = "Id")
     @ManyToOne
     private Transactiontypes transactionTypeId;
+    
     @JoinColumn(name = "UserId", referencedColumnName = "Id")
     @ManyToOne
     private Users userId;

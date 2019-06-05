@@ -40,22 +40,29 @@ public class Postingentries implements Serializable {
     @NotNull
     @Column(name = "Id")
     private Long id;
+    
     @Column(name = "DebitCredit")
     private Short debitCredit;
+    
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "Amount")
     private BigDecimal amount;
+    
     @Column(name = "StatementNo")
     private Integer statementNo;
+    
     @JoinColumn(name = "AccountId", referencedColumnName = "Id")
     @ManyToOne
     private Accounts accountId;
+    
     @JoinColumn(name = "ContraAccountId", referencedColumnName = "Id")
     @ManyToOne
     private Accounts contraAccountId;
+    
     @JoinColumn(name = "Currency", referencedColumnName = "Currency")
     @ManyToOne
     private Currencies currency;
+    
     @JoinColumn(name = "TransactionId", referencedColumnName = "Id")
     @ManyToOne
     private Transactions transactionId;

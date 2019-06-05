@@ -10,6 +10,7 @@ import com.asseco.trening.model.Clients;
 import com.asseco.trening.model.Transactions;
 import com.asseco.trening.model.Users;
 import com.asseco.trening.service.UsersService;
+import com.asseco.trening.util.UserWizard;
 import java.util.Collection;
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
@@ -32,18 +33,15 @@ public class UsersController {
     private UsersService usersService;
     
     private Users newUser;
+    private UserWizard userWizard;
     
     @PostConstruct
     public void init(){
         newUser = new Users();
+        userWizard = new UserWizard();
     }
     
     public void create(){
-        //TODO: check for properties null and display appropriate message
         usersService.create(newUser);
-        newUser = new Users();
-    }
-    public void addUserTransaction(){
-        
     }
 }

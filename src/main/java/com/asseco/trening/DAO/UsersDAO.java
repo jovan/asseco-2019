@@ -25,24 +25,11 @@ public class UsersDAO extends AbstractDAO<Users>{
     }
     
         public Users findByUsername(String username) {
-//        Query q = super.getEntityManager()
-//                .createQuery("from " + getEntityClass().getSimpleName() + " where Username="+username);
-        
-//        Query query = super.getEntityManager()
-//                      .createQuery("select u.password from Users u where u.username = :username");
-//        query.setParameter("username", username);
-
           Query query = super.getEntityManager()
                   .createNativeQuery("select * from Users",Users.class);
         
-//        List<Users> resultList = q.getResultList();
         List<Users> resultList = query.getResultList();
-        //List<Users> castedUsers = new ArrayList<>();
-        
-//        for(java.lang.Object[] o : resultList){
-//            castedUsers.add((Users)o);
-//        }
-        
+
         if(resultList.size() > 0){
             for(Users u : resultList){
                 if(u.getUsername().equals(username)){

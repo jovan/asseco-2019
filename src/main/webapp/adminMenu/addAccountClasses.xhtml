@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html   xmlns="http://www.w3c.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    <h:head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>Trening</title>
+    </h:head>
+    
+
+    <h:body>
+        
+        <ui:composition template="/templates/main.xhtml">
+            <ui:define name="content">
+                <h:form>
+                   
+
+<!--                    <p:growl id="growl" sticky="true" showDetail="true"/>-->
+
+                            <p:panel header="User information">
+                                <p:messages />
+                                <p:panelGrid columns="2" >
+                                    
+                                    <h:outputText value="Name *"/>
+                                    <p:inputText value="#{usersController.newUser.name}" required="true" label="Name"/>
+                                    
+                                    <h:outputText value="UserName *"/>
+                                    <p:inputText value="#{usersController.newUser.username}" required="true" label="Username"/>
+
+                                    <h:outputText value="Password *"/> 
+                                    <p:inputText value="#{usersController.newUser.password}" required="true"  label="Password"/>
+                                    
+                                    <h:outputText value="Admin rights "/> 
+                                    <p:selectOneButton required="true">
+                                        <f:selectItem itemLabel="Yes" itemValue="true" />
+                                        <f:selectItem itemLabel="No" itemValue="false" />
+                                    </p:selectOneButton>
+                                    
+                                </p:panelGrid>
+                            </p:panel>
+
+                        
+
+                    <p:commandButton value="Submit" action="#{userWizard.save}" 
+                                     update="@form" process="@this"/>
+                        
+                   
+                   
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+        
+    </h:body>
+</html>

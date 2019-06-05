@@ -43,12 +43,10 @@ public class Users implements Serializable {
     @NotNull
     @Column(name = "Id")
     private Long id;
-    
-    
+   
     @Size(max = 100)
     @Column(name = "Name")
     private String name;
-    
     
     @Size(max = 30)
     @Column(name = "Username")
@@ -61,7 +59,7 @@ public class Users implements Serializable {
     @OneToMany(mappedBy = "userId")
     private Collection<Transactions> transactionsCollection;
     
-    
+    //ONE TO MANY ?
     @JoinColumn(name = "CashAccountId", referencedColumnName = "Id")
     @ManyToOne
     private Accounts cashAccountId;

@@ -102,7 +102,7 @@ public class LoginController implements Serializable{
         if(user != null){ //redirect
             if(user.getPassword().equals(password))
                // externalContext.getSessionMap().put("user", user); //undo on logout
-                return "templates/main.xhtml?faces-redirect=true";
+                return "index.xhtml?faces-redirect=true";
         }
         
         resetText();
