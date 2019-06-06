@@ -19,9 +19,14 @@
 
         <ui:composition template="/templates/main.xhtml">
             <ui:define name="content">
-                <h:form>
+                
+
+                  <h:form>
                     <p:tabView>
                         <p:tab title="ПП 10" >
+                            <h:form>
+                                
+                            
                             <div class="row" style="margin-bottom:20px; " >
                                 <span class="col-sm-3 "></span>
                                 <span class="col-sm-3 text-right"
@@ -99,18 +104,19 @@
                                         <f:selectItem itemLabel="МИПС" itemValue="1"/>
                                         <f:selectItem itemLabel="КИБС" itemValue="2" />
                                     </p:selectOneMenu>
-
  
                                 </span>
                                 
                                 <span class="col-sm-6 "></span>
                                 <span class="col-sm-6 mt-3" style="display: flex; justify-content: right;">
-                                    <p:commandButton  value="OK" icon="fa fa-check" style="margin-right: 100px;"
-                                                      action="#{transactionsController.processPP10()}"></p:commandButton>
+                                                    <p:commandButton value="Ajax Submit" 
+                                 action="#{transactionsController.processPP10()}"
+                                 style="margin-right:20px;" 
+                                 styleClass="ui-priority-primary" />
                                 </span>
 
                             </div>
-
+                                </h:form>
                         </p:tab>
                         <p:tab title="ПП 30">
                         </p:tab>

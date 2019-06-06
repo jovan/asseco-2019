@@ -38,31 +38,32 @@
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav ml-auto py-4 py-md-0">
 								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
-                                                                   <a class="nav-link "  href="index.xhtml" > Home </a>
+                                                                   <a class="nav-link "  href="index.xhtml" > Дома </a>
 								</li>
                                                             <ui:fragment rendered="#{loginController.checkAdmin()}">
                                                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
 									<a class="nav-link dropdown-toggle" data-toggle="dropdown" 
                                                                            href="#" role="button" aria-haspopup="true" 
-                                                                           aria-expanded="false">Administrator menu
+                                                                           aria-expanded="false">Администраторско мени
                                                                         </a>
 									<div class="dropdown-menu">
 										<a class="dropdown-item" 
-                                                                                   href="adminMenu/addUsers.xhtml">Insert Users</a>
+                                                                                   href="addUsers.xhtml">Insert Users</a>
 										<a class="dropdown-item" 
-                                                                                   href="adminMenu/addAccountClasses.xhtml">Insert AccountClasses</a>
+                                                                                   href="addAccountClasses.xhtml">Insert AccountClasses</a>
 										<a class="dropdown-item" href="#">Insert AccountTypes</a>
 										<a class="dropdown-item" href="#">Insert TransactionTypes</a>
 									</div>
 								</li>
                                                             </ui:fragment>
+                                                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                                                    <a class="nav-link" href="#">Евиденција на Клиенти &hArr; Акаунти</a>
+								</li>	
+                                                            
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                                                   <a class="nav-link "  href="verification.xhtml" > Верификација на налози </a>
+								</li>
 								
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="#">Journal</a>
-								</li>
-								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="#">Contact</a>
-								</li>
 							</ul>
 						</div>
 

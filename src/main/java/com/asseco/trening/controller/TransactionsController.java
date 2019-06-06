@@ -15,6 +15,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -23,6 +24,7 @@ import javax.inject.Named;
  * @author j0van
  */
 @Named("transactionsController")
+@Stateless
 public class TransactionsController {
     
     @Inject
@@ -55,9 +57,7 @@ public class TransactionsController {
     }
     
     public void processPP10(){
-        newTransaction.setStatus(TransactionStatusEnum.VNESENA);
         checkPP10();
-        
     }
     
     private void checkPP10(){
