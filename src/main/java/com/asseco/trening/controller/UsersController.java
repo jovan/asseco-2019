@@ -43,5 +43,6 @@ public class UsersController {
     
     public void create(){
         usersService.create(newUser);
+        newUser = new Users();
     }
 }

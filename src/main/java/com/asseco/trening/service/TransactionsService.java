@@ -26,4 +26,8 @@ public class TransactionsService {
         return transactionsDAO.findAll();
 
     }
+    
+    public void persist(Transactions transaction){
+        transactionsDAO.persist(transaction);
+    }
 }

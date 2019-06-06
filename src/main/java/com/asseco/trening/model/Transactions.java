@@ -5,6 +5,8 @@
  */
 package com.asseco.trening.model;
 
+import com.asseco.trening.enumeration.TransactionItnostEnum;
+import com.asseco.trening.enumeration.TransactionStatusEnum;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Collection;
@@ -71,9 +73,11 @@ public class Transactions implements Serializable {
     @Column(name = "Description")
     private String description;
     
-    @Size(max = 50)
     @Column(name = "Status")
-    private String status;
+    private TransactionStatusEnum status;
+    
+    @Column(name = "Itnost")
+    private TransactionItnostEnum itnost;
     
     @OneToMany(mappedBy = "transactionId")
     private Collection<Postingentries> postingentriesCollection;
@@ -153,13 +157,23 @@ public class Transactions implements Serializable {
         this.description = description;
     }
 
-    public String getStatus() {
+    public TransactionStatusEnum getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(TransactionStatusEnum status) {
         this.status = status;
     }
+
+    public TransactionItnostEnum getItnost() {
+        return itnost;
+    }
+
+    public void setItnost(TransactionItnostEnum itnost) {
+        this.itnost = itnost;
+    }
+
+
 
     @XmlTransient
     public Collection<Postingentries> getPostingentriesCollection() {

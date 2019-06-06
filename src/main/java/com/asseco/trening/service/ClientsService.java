@@ -5,9 +5,8 @@
  */
 package com.asseco.trening.service;
 
-import com.asseco.trening.DAO.AccountsDAO;
-import com.asseco.trening.model.Accounts;
-import java.util.List;
+import com.asseco.trening.DAO.ClientsDAO;
+import com.asseco.trening.model.Clients;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -16,16 +15,11 @@ import javax.ejb.Stateless;
  * @author LT5
  */
 @Stateless
-public class AccountsService {
-    
+public class ClientsService {
     @EJB
-    private AccountsDAO accountsDAO;
+    ClientsDAO clientsDAO;
     
-    public List<Accounts> findAll() {
-        return accountsDAO.findAll();
-
-    }
-    public void persist(Accounts acc){
-        accountsDAO.persist(acc);
+    public void persist(Clients client){
+        clientsDAO.persist(client);
     }
 }

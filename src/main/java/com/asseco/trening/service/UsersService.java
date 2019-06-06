@@ -30,6 +30,6 @@ public class UsersService {
      }
    
     public void create(Users user){
-        usersDAO.create(user);
+        usersDAO.persist(user);
     }
 }

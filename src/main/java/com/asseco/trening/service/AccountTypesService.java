@@ -6,6 +6,8 @@
 package com.asseco.trening.service;
 
 import com.asseco.trening.DAO.AccountTypesDAO;
+import com.asseco.trening.model.Accounttypes;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -18,4 +20,8 @@ public class AccountTypesService {
     
     @EJB
     private AccountTypesDAO accountTypesDAO;
+    
+    public List<Accounttypes> findAll(){
+        return accountTypesDAO.findAll();
+    }
 }
