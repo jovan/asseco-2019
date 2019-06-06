@@ -44,22 +44,29 @@ public class Transactiontypes implements Serializable {
     @NotNull
     @Column(name = "Id")
     private Long id;
+    
     @Size(max = 30)
     @Column(name = "Name")
     private String name;
+    
     @Size(max = 100)
     @Column(name = "Description")
     private String description;
+    
     @Column(name = "ReflectsAmountOnHold")
     private Boolean reflectsAmountOnHold;
+    
     @Column(name = "Hashfee")
     private Boolean hashfee;
+    
     @JoinColumn(name = "AccountClassDebit", referencedColumnName = "Id")
     @ManyToOne
     private Accountclasses accountClassDebit;
+    
     @JoinColumn(name = "AccountClaassCredit", referencedColumnName = "Id")
     @ManyToOne
     private Accountclasses accountClaassCredit;
+    
     @OneToMany(mappedBy = "transactionTypeId")
     private Collection<Transactions> transactionsCollection;
 

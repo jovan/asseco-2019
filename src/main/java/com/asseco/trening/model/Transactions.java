@@ -54,7 +54,7 @@ public class Transactions implements Serializable {
     
     @Column(name = "EntyDate")
     @Temporal(TemporalType.DATE)
-    private Date entyDate;
+    private Date entyDate; // = new Date() -> at the moment
     
     @Column(name = "Date")
     @Temporal(TemporalType.DATE)

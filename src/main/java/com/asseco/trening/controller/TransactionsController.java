@@ -24,4 +24,8 @@ public class TransactionsController {
     public List<Transactions> findAll(){
         return transactionsService.findAll();
     }
+    
+    public void processPP10(){
+        
+    }
 }

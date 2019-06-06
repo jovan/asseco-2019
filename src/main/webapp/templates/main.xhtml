@@ -11,101 +11,76 @@
         xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     
   <h:head>
-<!--      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>-->
-    <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"></link>-->
-<!--    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
-
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"/>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <h:outputStylesheet name="css/style.css" />
+      <h:outputScript name="js/script.js" />
+<!--    <link rel="stylesheet" type="text/css" href="style.css"/>-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+    <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  
-    <script type="text/javascript">
-        $("ul > li").click(function(){
-            //this -> new home
-            console.log($this);
-            $("ul > li").each(function(){
-                $(this).removeClass();
-            });
-            $(this).toggleClass("active");
-        });
-    </script>
+<!--    <script type="text/javascript" src="script.js"></script>-->
   </h:head>
     
-  <h:body>
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        
-          <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#jovanmeni" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">God's Bank</a>
-        </div>
+  <h:body class="dark">
+    
+      <div class="navigation-wrap bg-light start-header start-style">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<nav class="navbar navbar-expand-md navbar-light">
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="jovanmeni">
-          
-            <ul class="nav navbar-nav">
-                <li class="active">
-                    <a href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                
-                <ui:fragment rendered="#{loginController.checkAdmin()}">
-                  
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrator menu<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><p:link outcome="/adminMenu/addUsers.xhtml" value="Add User"></p:link></li>
-                            <li role="separator" class="divider"></li>
-                            <li><p:link outcome="/adminMenu/addAccountClasses.xhtml" value="Add AccountClasses"></p:link></li>
-                            <li role="separator" class="divider"></li>
-                            <li><p:link outcome="#{testKorisniciController.test()}" value="Add AccountTypes"></p:link></li>
-                            <li role="separator" class="divider"></li>
-                            <li><p:link outcome="#{testKorisniciController.test()}" value="Add TransactionTypes"></p:link></li>
-                        </ul>
-                    </li>
-                </ui:fragment>
-                
-            
-<!--                <li><a href="/overview.xhtml">Clients &hArr; Accounts</a></li>-->
-                <li>
-                    <a style="display: inline-block">
-                        <p:link style="display: inline-block;" outcome="/overview.xhtml">Clients &hArr; Accounts</p:link> 
-                    </a>
-                </li>
-          </ul>
-            
-          <form class="navbar-form navbar-left">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search"></input>
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Link</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Log out</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
+<!--						<a class="navbar-brand" href="https://themeforest.net/user/ig_design/portfolio" target="_blank"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/logo.svg" alt=""/></a>-->
+
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ml-auto py-4 py-md-0">
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
+                                                                   <a class="nav-link "  href="index.xhtml" > Home </a>
+								</li>
+                                                            <ui:fragment rendered="#{loginController.checkAdmin()}">
+                                                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link dropdown-toggle" data-toggle="dropdown" 
+                                                                           href="#" role="button" aria-haspopup="true" 
+                                                                           aria-expanded="false">Administrator menu
+                                                                        </a>
+									<div class="dropdown-menu">
+										<a class="dropdown-item" 
+                                                                                   href="adminMenu/addUsers.xhtml">Insert Users</a>
+										<a class="dropdown-item" 
+                                                                                   href="adminMenu/addAccountClasses.xhtml">Insert AccountClasses</a>
+										<a class="dropdown-item" href="#">Insert AccountTypes</a>
+										<a class="dropdown-item" href="#">Insert TransactionTypes</a>
+									</div>
+								</li>
+                                                            </ui:fragment>
+								
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="#">Journal</a>
+								</li>
+								<li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+									<a class="nav-link" href="#">Contact</a>
+								</li>
+							</ul>
+						</div>
+
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
       
-    <div class="container">
-      <ui:insert name="content"> <!-- ui:define obratno -->
+	<div class="section full-height">
+            <div class="absolute-center">
+		<div class="container">
+                    <ui:insert name="content"> <!-- ui:define obratno -->
 
-      </ui:insert>
-    </div>
-
+                    </ui:insert>
+                </div>
+            </div>
+	</div>
       
   </h:body>
 </html>

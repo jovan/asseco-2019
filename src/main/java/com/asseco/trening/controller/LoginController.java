@@ -34,12 +34,9 @@ import lombok.Setter;
  * @author LT5
  * 
  * */
-@Getter
-@Setter
 @SessionScoped
 @Named("loginController")
 public class LoginController implements Serializable{
-    //TODO: Rename ?
     
     @Inject
     private UsersService usersService;
@@ -54,61 +51,18 @@ public class LoginController implements Serializable{
     private String username;
     private String password;
     
-//    private byte[] salt = new byte[1];
-//    
-//    @PostConstruct
-//    private void assignSalt(){
-//        try{
-//            salt = getSalt();
-//        }
-//        catch(Exception e){
-//            e.printStackTrace();
-//        }
-//
-//    }
 
-  
-  
-    
-    //throws NoSuchAlgorithmException
+ 
     public String login() {
-        //read password from database
-        user = usersService.findByUsername(username); 
-        
-        //String dataBasePass = usersService.findByUsername(username).getPassword();
-        //check if the user does not exists show message
-        //else check if the username exists
-        //else use SHA Hashing
-//        String salt = passwordService.generateSalt(512).get();
-//        String key = passwordService.hashPassword(password, salt).get();
-//        
-//        boolean verify = passwordService.verifyPassword(password, key, salt);
-  
-        
-//        String hash1 = get_SHA_512_SecurePassword(password);
-//        String hash2 = get_SHA_512_SecurePassword(password);
-//        Boolean equal = hash1.equals(hash2);
-
-
-        //String securePassword = get_SHA_256_SecurePassword(password);
-//        if(dataBasePass.equals(securePassword)){
-//            //redirect to index page
-//        }
-//        else{
-//            //show message that the pass doesn't match
-//        }
-        //todo: read from database and check for match
-        //if a match create new user
-        if(user != null){ //redirect
-            if(user.getPassword().equals(password))
-               // externalContext.getSessionMap().put("user", user); //undo on logout
-                return "index.xhtml?faces-redirect=true";
-        }
-        
-        resetText();
+        user = usersService.findByUsername(username);
+            if(user != null){ //redirect
+                if(user.getPassword().equals(password))
+                    getSession().setAttribute("user", this.user);
+                    return "index.xhtml?faces-redirect=true";
+            }
         showMessages("");
         return null;
-    }
+     }
     
     //logout event, invalidate session
     public String logout() {
@@ -124,7 +78,7 @@ public class LoginController implements Serializable{
 
     private String showMessages(String message){
         FacesContext.getCurrentInstance().addMessage(null,
-            new FacesMessage(FacesMessage.SEVERITY_ERROR, "Oops, wrong username or password","Oops, wrong username or password"));
+            new FacesMessage(FacesMessage.SEVERITY_ERROR, "Грешен username или password","Грешен username или password"));
         return "";
     }
     private void resetUser(){
@@ -132,8 +86,8 @@ public class LoginController implements Serializable{
         resetText();
     }
     private void resetText(){
-        username=null;
-        password=null;
+        username="";
+        password="";
         //clearMessages();
     }
     private void clearMessages(){
@@ -147,46 +101,40 @@ public class LoginController implements Serializable{
         //TODO: filter and not return null
     }
     
-    
-//    private static String get_SHA_512_SecurePassword(String passwordToHash)
-//    {
-//        String generatedPassword = null;
-//        try {
-//            byte[] salt = salt;
-//            MessageDigest md = MessageDigest.getInstance("SHA-512");
-//            md.update(salt);
-//            byte[] bytes = md.digest(passwordToHash.getBytes());
-//            
-//            //convert byte password ro string
-//            StringBuilder sb = new StringBuilder();
-//            for(int i=0; i< bytes.length ;i++)
-//            {
-//                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-//            }
-//            generatedPassword = sb.toString();
-//        }
-//        catch (NoSuchAlgorithmException e)
-//        {
-//            e.printStackTrace();
-//        }
-//        return generatedPassword;
-//        
-//    }
-    
-    private static byte[] getSalt() throws NoSuchAlgorithmException
-    {
-        SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
-        byte[] salt = new byte[16];
-        sr.nextBytes(salt);
-        return salt;
-    }
-    
     private String loginAction(){
         return "index.xhtml?faces-redirect=true";
     }
     
     private Boolean checkLogin(){
         return user != null;
+    }
+    
+        public Users getUser() {
+        return user;
+    }
+    
+    public boolean isLoggedIn(){
+        return user!=null;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
+    }
+
+    public String getUsername() {
+        return username!=null ? username="" : username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password!=null ? password="" : password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
     
 }

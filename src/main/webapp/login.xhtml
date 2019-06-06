@@ -39,6 +39,22 @@
         font-size: 15px;
         font-weight: bold;
     }
+    
+    body{
+        font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 400;
+            color: #212112;
+            background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat-back.svg');
+            background-position: center;
+            background-repeat: repeat;
+            background-size: 7%;
+            background-color: #fff;
+            overflow-x: hidden;
+        transition: all 200ms linear;
+        background-color: #14151a !important;
+    }
     </style>
 
 
@@ -54,32 +70,33 @@
                 <p:staticMessage severity="error" summary="ERROR!" detail="Hey, i'm a error" />
             </div>-->
 
-            <p:messages id="messages"/>
-            
-            
-            <p:growl autoUpdate="true"/>
-            
-            <h2 class="text-center">Log in</h2>       
-            <div class="form-group">
-                <p:inputText id="username" class="form-control" required="true"
-                             requiredMessage="Username is required!" value="#{loginController.username}" />
+            <div>
+                <p:messages id="messages"/>   
+
+                <h2 class="text-center">Log in</h2><br/><br/>
+
+                <div class="form-group">
+                    <h:outputLabel for="username" value="Username " />
+                    <p:inputText id="username" class="form-control" required="true"
+                                 requiredMessage="Мора да внесете username!" value="#{loginController.username}" />
+                </div>
+                <div class="form-group">
+                    <h:outputLabel for="password" value="Password " />
+                    <h:inputSecret id="password" class="form-control" required="true" 
+                                   requiredMessage="Мора да внесете password!" value="#{loginController.password}" />
+
+                </div><br/>
+                <div class="form-group">
+                    <p:commandButton class="btn btn-primary btn-block" id="loginBtn" value="Log in"
+                                     update="messages" action="#{loginController.login()}"/>
+                </div>
+
+
+                <div class="clearfix">
+
+                </div>    
             </div>
-            <div class="form-group">
-                <h:inputSecret id="password" class="form-control" required="true" 
-                               requiredMessage="Password is required!" value="#{loginController.password}" />
                 
-            </div>
-            <div class="form-group">
-                <p:commandButton class="btn btn-primary btn-block" id="loginBtn" value="Log in"
-                                 update="messages" action="#{loginController.login()}"/>
-            </div>
-            
-            
-            <div class="clearfix">
-                <label class="pull-left checkbox-inline"><input type="checkbox"></input> Remember me</label>
-                <a href="#" class="pull-right">Forgot Password?</a>
-            </div>        
-            <p class="text-center"><a href="#">Create an Account</a></p>
         </h:form>     
     </div>
       

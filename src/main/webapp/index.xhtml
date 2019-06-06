@@ -6,115 +6,111 @@
         xmlns:p="http://primefaces.org/ui"
         xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
         xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-    
+
     <h:head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
         <title>Trening</title>
+        <style>
+            
+        </style>
     </h:head>
-    
 
     <h:body>
-        
+
         <ui:composition template="/templates/main.xhtml">
             <ui:define name="content">
-                
                 <h:form>
                     <p:tabView>
-                        <p:tab title="ПП 10">
-                            <p:panelGrid style="margin-top:20px">
+                        <p:tab title="ПП 10" >
+                            <div class="row" style="margin-bottom:20px; " >
+                                <span class="col-sm-3 "></span>
+                                <span class="col-sm-3 text-right"
+                                      style="font-size: 20px;
+                                      font-weight: bolder;
+                                      font-family: fantasy">УПЛАТУВАЧ</span>
+                                <span class="col-sm-3 "></span>
+                                <span class="col-sm-3 text-right"
+                                      style="font-size: 20px;
+                                      font-weight: bolder;
+                                      font-family: fantasy">ПРИМАЧ</span>
                                 
-                                    <p:column colspan="30" style="font-weight: bold;">Seattle</p:column>
-                                    <p:column colspan="6" style="font-weight: bold;">Seattle</p:column>
-                                
+                                <span class="col-sm-6 border border-secondary">
 
-    <p:row>
-        <p:column>Houston</p:column>
-        <p:column >0</p:column>
-    </p:row>
+                                    <label class="mb-1">НАЗИВ И СЕДИШТЕ НА УПЛАТУВАЧ</label> <br/>
+                                    <p:inputTextarea rows="2" cols="50" class="mb-2" style="width:100%"
+                                                     completeMethod="#{inputTextareaView.completeArea}"
+                                                     queryDelay="750" minQueryLength="4" />
+                                </span>
+                                <span class="col-sm-6 border border-secondary">
+                                    <label class="mb-1">НАЗИВ НА ПРИМАЧОТ</label> <br/>
+                                    <p:inputTextarea rows="2" cols="50" class="mb-2" style="width:100%"
+                                                     completeMethod="#{inputTextareaView.completeArea}"
+                                                     queryDelay="750" minQueryLength="4" />
+                                </span>
+                                <span class="col-sm-6 border border-secondary">
+                                    <label class="mb-1">БАНКА НА УПЛАТУВАЧ</label> <br/>
+                                    <p:inputText style="width:100%"  class="mb-2"/>
+                                </span>
+                                <span class="col-sm-6 border border-secondary">
+                                    <label class="mb-1">БАНКА НА ПРИМАЧ</label> <br/>
+                                    <p:inputText style="width:100%"  class="mb-2"/>
+                                </span>
+                                <span class="col-sm-6 border border-secondary">
+                                    <label class="mb-1">ДАНОЧЕН БРОЈ ИЛИ ЕМБГ И ПОВИКУВАЊЕ НА БРОЈ</label> <br/>
+                                    <p:inputText style="width:100%"  class="mb-2"/>
+                                </span>
+                                <span class="col-sm-6 border border-secondary">
+                                    <label class="mb-1">ТРАНСАКЦИСКА СМЕТКА</label> <br/>
+                                    <p:inputMask style="width:100%" class="mb-2" mask="999999999999999"/>
+                                </span>
+                                <span class="col-sm-6 border border-secondary">
+                                    <label class="mb-1">ЦЕЛ НА ДОЗНАКА</label> <br/>
+                                    <p:inputTextarea rows="2" cols="50" class="mb-2" style="width:100%"
+                                                     completeMethod="#{inputTextareaView.completeArea}"
+                                                     queryDelay="750" minQueryLength="4" />
+                                </span>
+                                <span class="col-sm-6 border border-secondary">
+                                    <label class="mb-1">ИЗНОС</label> <br/>
+                                    <p:inputNumber style="width:100% !important;"  class="mb-2" symbol=" CHF" symbolPosition="s" 
+                                                    decimalSeparator="," thousandSeparator="."/>
+                                </span>
+                                <span class="col-sm-3 border border-secondary">
+                                    <label class="mb-1">ДАТУМ НА ИСПЛАТА</label> <br/>
+                                    <p:datePicker class="mb-1" id="button" 
+                                                  value="" 
+                                                  showIcon="true" />
+                                </span>
+                                <span class="text-right col-sm-3 border border-secondary">
+                                    <label class=" mb-1">МЕСТО НА УПЛАТА</label> <br/>
+                                    <p:selectOneMenu  style="width:125px">
+                                        <f:selectItem itemLabel="Центар" itemValue="Центар" />
+                                        <f:selectItem itemLabel="Тафталиџе" itemValue="Тафталиџе"/>
+                                        <f:selectItem itemLabel="Карпош" itemValue="Каропш" />
+                                    </p:selectOneMenu>
+                                </span>
+                                <span class="col-sm-3 border border-secondary">
+                                    <label class="mb-1">ШИФРА</label> <br/>
+                                    <p:inputMask class="mb-2" mask="999"/>
+                                </span>
+                                <span class=" text-right col-sm-3 border border-secondary">
+                                    <label class="mb-1">НАЧИН</label> <br/>
+                                    <p:selectOneMenu id="console"  style="width:125px">
+                                        <f:selectItem itemLabel="Интерна" itemValue="0" />
+                                        <f:selectItem itemLabel="МИПС" itemValue="1"/>
+                                        <f:selectItem itemLabel="КИБС" itemValue="2" />
+                                    </p:selectOneMenu>
+
  
-    <p:row>
-        <p:column colspan="4" styleClass="ui-widget-header">
-            <p:spacer height="0"/>
-        </p:column>
-    </p:row>
- 
-    <p:row>
-        <p:column style="font-weight: bold;">Utah</p:column>
-        <p:column style="font-weight: bold;">4</p:column>
- 
-        <p:column rowspan="2">Utah</p:column>
-        <p:column rowspan="2">3</p:column>
-    </p:row>
- 
-    <p:row>
-        <p:column>San Antonio</p:column>
-        <p:column >2</p:column>
-    </p:row>
- 
-    <p:row>
-        <p:column colspan="6" styleClass="ui-widget-header">
-            <p:spacer height="0"/>
-        </p:column>
-    </p:row>
- 
-    <p:row>
-        <p:column style="font-weight: bold;">Chicago</p:column>
-        <p:column style="font-weight: bold;">4</p:column>
- 
-        <p:column rowspan="2" style="font-weight: bold;">Chicago</p:column>
-        <p:column rowspan="2" style="font-weight: bold;">4</p:column>
- 
-        <p:column rowspan="5" style="font-weight: bold;">Chicago</p:column>
-        <p:column rowspan="5" style="font-weight: bold;">4</p:column>
-    </p:row>
- 
-    <p:row>
-        <p:column>New York</p:column>
-        <p:column >1</p:column>
-    </p:row>
- 
-    <p:row>
-        <p:column colspan="4" styleClass="ui-widget-header">
-            <p:spacer height="0"/>
-        </p:column>
-    </p:row>
- 
-    <p:row>
-        <p:column>Atlanta</p:column>
-        <p:column >1</p:column>
- 
-        <p:column rowspan="2">Orlando</p:column>
-        <p:column rowspan="2">0</p:column>
-    </p:row>
- 
-    <p:row>
-        <p:column style="font-weight: bold;">Orlando</p:column>
-        <p:column style="font-weight: bold;">4</p:column>
-    </p:row>
- 
- 
-    <f:facet name="footer">
-        <p:row>
-            <p:column  colspan="4" style="text-align: right">
-                Finals MVP
-            </p:column>
-            <p:column  colspan="3" rowspan="3">
-                Michael Jordan (Chicago)
-            </p:column>
-        </p:row>
- 
-        <p:row>
-            <p:column  colspan="4" style="text-align: right">
-                Season MVP
-            </p:column>
-        </p:row>
-        <p:row>
-            <p:column  colspan="4" style="text-align: right">
-                Top Scorer
-            </p:column>
-        </p:row>
-    </f:facet>
-</p:panelGrid>
+                                </span>
+                                
+                                <span class="col-sm-6 "></span>
+                                <span class="col-sm-6 mt-3" style="display: flex; justify-content: right;">
+                                    <p:commandButton  value="OK" icon="fa fa-check" style="margin-right: 100px;"
+                                              ></p:commandButton>
+                                </span>
+
+                            </div>
+
                         </p:tab>
                         <p:tab title="ПП 30">
                         </p:tab>
@@ -122,12 +118,8 @@
                         </p:tab>
                     </p:tabView>
                 </h:form>
-                
-<!--                http://arenal.com.mk/images/Products/virmani%20kom.jpg-->
-<!--https://www.primefaces.org/showcase/ui/panel/tabView.xhtml-->
-
             </ui:define>
         </ui:composition>
-        
+
     </h:body>
 </html>

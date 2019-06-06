@@ -14,9 +14,9 @@
 <!--	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>/faces/*</url-pattern>
-	</servlet-mapping>-->
+	</servlet-mapping>
         
-<!--    <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
         <url-pattern>/javax.faces.resource/*</url-pattern>
@@ -46,7 +46,7 @@
         
         <context-param>
             <param-name>primefaces.THEME</param-name>
-            <param-value>nova-light</param-value>
+            <param-value>afterdark</param-value>
         </context-param>
         
 	<listener>
