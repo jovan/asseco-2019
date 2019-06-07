@@ -42,7 +42,7 @@ public class UsersController {
     }
     
     public void create(){
-        usersService.create(newUser);
+        usersService.create(newUser); //persist error
         newUser = new Users();
     }
 }
